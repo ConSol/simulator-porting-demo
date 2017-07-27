@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:tns="http://www.citrusframework.org/simulator/porting"
+    xmlns:envelope="http://www.citrusframework.org/simulator/porting/envelope"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    name="general"
+    targetNamespace="http://www.citrusframework.org/simulator/porting">
+  
+  <wsdl:types>
+    <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.citrusframework.org/simulator/porting" xmlns:envelope="http://www.citrusframework.org/simulator/porting/envelope">
+      <xsd:import namespace="http://www.citrusframework.org/simulator/porting/envelope" schemaLocation="../xsd/porting.xsd"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="NegotiationRequest">
+    <wsdl:part name="Request" element="envelope:Request"/>
+  </wsdl:message>
+  <wsdl:message name="Acknowledgement">
+    <wsdl:part name="Acknowledgement" element="envelope:Acknowledgement"/>
+  </wsdl:message>
+  <wsdl:message name="NegotiationResponse">
+    <wsdl:part name="Response" element="envelope:Response"/>
+  </wsdl:message>
+  <wsdl:portType name="PortingPort">
+    <wsdl:operation name="sendNegotiationRequest">
+      <wsdl:input message="tns:NegotiationRequest"/>
+      <wsdl:output message="tns:Acknowledgement"/>
+    </wsdl:operation>
+    <wsdl:operation name="sendNegotiationResponse">
+      <wsdl:input message="tns:NegotiationResponse"/>
+      <wsdl:output message="tns:Acknowledgement"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="PortingBinding" type="tns:PortingPort">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="sendNegotiationRequest">
+      <soap:operation soapAction="http://www.citrusframework.org/simulator/porting/sendNegotiationRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="sendNegotiationResponse">
+      <soap:operation soapAction="http://www.citrusframework.org/simulator/porting/sendNegotiationResponse"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PortingService">
+    <wsdl:port name="porting" binding="tns:PortingBinding">
+      <soap:address location="http://www.citrusframework.org/simulator/porting"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

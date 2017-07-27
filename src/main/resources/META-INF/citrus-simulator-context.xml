@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:citrus="http://www.citrusframework.org/schema/config"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
+       http://www.citrusframework.org/schema/config http://www.citrusframework.org/schema/config/citrus-config.xsd">
+
+  <citrus:schema-repository id="schemaRepository">
+    <citrus:locations>
+      <citrus:location path="classpath:META-INF/schemas/xsd/*.xsd"/>
+    </citrus:locations>
+  </citrus:schema-repository>
+
+  <citrus:global-variables>
+    <citrus:variable name="simulator.name" value="Porting Simulator"/>
+  </citrus:global-variables>
+
+  <citrus:namespace-context>
+    <citrus:namespace prefix="citrus" uri="http://citrusframework.org"/>
+    <citrus:namespace prefix="port" uri="http://www.citrusframework.org/simulator/porting"/>
+    <citrus:namespace prefix="portenv" uri="http://www.citrusframework.org/simulator/porting/envelope"/>
+  </citrus:namespace-context>
+
+</beans>

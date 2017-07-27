@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema targetNamespace="http://www.citrusframework.org/simulator/porting/envelope"
+            xmlns:tns="http://www.citrusframework.org/simulator/porting/envelope"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            version="1">
+
+  <xsd:element name="Request" type="tns:RequestType"/>
+  <xsd:element name="Acknowledgement" type="tns:AcknowledgementType"/>
+  <xsd:element name="Response" type="tns:ResponseType"/>
+
+  <xsd:complexType name="RequestType">
+    <xsd:sequence>
+      <xsd:element name="requestId" type="xsd:string"/>
+      <xsd:element name="receivingCarrier" type="xsd:string"/>
+      <xsd:element name="donatingCarrier" type="xsd:string"/>
+      <xsd:element name="subscriber" type="tns:SubscriberType"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="AcknowledgementType">
+    <xsd:sequence>
+      <xsd:element name="status" type="tns:AcknowledgementCodeType"/>
+      <xsd:element name="text" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="ResponseType">
+    <xsd:sequence>
+      <xsd:element name="requestId" type="xsd:string"/>
+      <xsd:element name="receivingCarrier" type="xsd:string"/>
+      <xsd:element name="donatingCarrier" type="xsd:string"/>
+      <xsd:element name="code" type="tns:ConfirmationCodeType"/>
+      <xsd:element name="text" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="SubscriberType">
+    <xsd:sequence>
+      <xsd:element name="forename" type="xsd:string"/>
+      <xsd:element name="surname" type="xsd:string"/>
+      <xsd:element name="dateOfBirth" type="xsd:string"/>
+      <xsd:element name="phoneNumber" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:simpleType name="AcknowledgementCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="OK"/>
+      <xsd:enumeration value="INVALID_REQUEST"/>
+      <xsd:enumeration value="SERVICE_NOT_AVAILABLE"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+  <xsd:simpleType name="ConfirmationCodeType">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="APPROVED"/>
+      <xsd:enumeration value="REJECTED"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+</xsd:schema>
+

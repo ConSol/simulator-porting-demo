@@ -1,0 +1,20 @@
+@startuml
+
+participant "Receiving Carrier" as ReceivingCarrier
+participant "Donating Carrier" as DonatingCarrier
+
+
+ReceivingCarrier -> DonatingCarrier : PortingNegotiationRequest
+activate DonatingCarrier
+DonatingCarrier -->> ReceivingCarrier : Acknowledgment
+deactivate DonatingCarrier
+
+...
+
+DonatingCarrier -> ReceivingCarrier : PortingNegotiationResponse
+note right: porting negotiation request approved / rejected
+activate ReceivingCarrier
+ReceivingCarrier -->> DonatingCarrier : Acknowledgment
+deactivate ReceivingCarrier
+
+@enduml
