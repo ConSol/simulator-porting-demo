@@ -1,5 +1,6 @@
 package com.consol.citrus.simulator.porting.scenario;
 
+import com.consol.citrus.simulator.porting.SoapActions;
 import com.consol.citrus.simulator.scenario.AbstractSimulatorScenario;
 import com.consol.citrus.simulator.scenario.Scenario;
 import com.consol.citrus.simulator.scenario.ScenarioDesigner;
@@ -15,7 +16,7 @@ public class Acknowledgement extends AbstractSimulatorScenario {
         scenario.echo("Receiving porting request or response ...");
         scenario
                 .receive()
-                .header(SoapMessageHeaders.SOAP_ACTION, "http://www.citrusframework.org/simulator/porting/sendNegotiationRequest")
+                .header(SoapMessageHeaders.SOAP_ACTION, SoapActions.SEND_NEGOTIATION_REQUEST_ACTION)
                 .extractFromPayload("//requestId", REQUEST_ID)
         ;
 
