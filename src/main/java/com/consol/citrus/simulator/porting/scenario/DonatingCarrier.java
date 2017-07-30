@@ -1,5 +1,6 @@
 package com.consol.citrus.simulator.porting.scenario;
 
+import com.consol.citrus.simulator.porting.SoapActions;
 import com.consol.citrus.simulator.scenario.AbstractSimulatorScenario;
 import com.consol.citrus.simulator.scenario.Scenario;
 import com.consol.citrus.simulator.scenario.ScenarioDesigner;
@@ -20,7 +21,7 @@ public class DonatingCarrier extends AbstractSimulatorScenario {
         scenario.echo("Receiving PortingRequest ...");
         scenario
                 .receive()
-                .header(SoapMessageHeaders.SOAP_ACTION, "http://www.citrusframework.org/simulator/porting/sendNegotiationRequest")
+                .header(SoapMessageHeaders.SOAP_ACTION, SoapActions.SEND_NEGOTIATION_REQUEST_ACTION)
                 .extractFromPayload("//requestId", REQUEST_ID)
                 .extractFromPayload("//receivingCarrier", RECEIVING_CARRIER)
                 .extractFromPayload("//donatingCarrier", DONATING_CARRIER)
@@ -43,7 +44,7 @@ public class DonatingCarrier extends AbstractSimulatorScenario {
                         "    <code>APPROVED</code>\n" +
                         "    <text></text>\n" +
                         "</env:Response>")
-                .header("citrus_soap_action", "http://www.citrusframework.org/simulator/porting/sendNegotiationResponse");
+                .header(SoapMessageHeaders.SOAP_ACTION, SoapActions.SEND_NEGOTIATION_RESPONSE_ACTION);
 
         scenario.echo("Receving Acknowledgement ...");
         scenario.receive(webServiceClient)

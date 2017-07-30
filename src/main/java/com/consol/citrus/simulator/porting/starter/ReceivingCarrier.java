@@ -1,6 +1,7 @@
 package com.consol.citrus.simulator.porting.starter;
 
 import com.consol.citrus.simulator.model.ScenarioParameter;
+import com.consol.citrus.simulator.porting.SoapActions;
 import com.consol.citrus.simulator.scenario.AbstractScenarioStarter;
 import com.consol.citrus.simulator.scenario.ScenarioDesigner;
 import com.consol.citrus.simulator.scenario.Starter;
@@ -38,7 +39,7 @@ public class ReceivingCarrier extends AbstractScenarioStarter {
                         "        <phoneNumber>" + placeholder(PHONE_NUMBER) + "</phoneNumber>\n" +
                         "    </subscriber>\n" +
                         "</env:Request>")
-                .header("citrus_soap_action", "http://www.citrusframework.org/simulator/porting/sendNegotiationRequest");
+                .header(SoapMessageHeaders.SOAP_ACTION, SoapActions.SEND_NEGOTIATION_REQUEST_ACTION);
 
         scenario.echo("Receving Acknowledgement ...");
         scenario.receive(webServiceClient)
@@ -50,7 +51,7 @@ public class ReceivingCarrier extends AbstractScenarioStarter {
         scenario.echo("Receiving Porting Response ...");
         scenario
                 .receive()
-                .header(SoapMessageHeaders.SOAP_ACTION, "http://www.citrusframework.org/simulator/porting/sendNegotiationResponse")
+                .header(SoapMessageHeaders.SOAP_ACTION, SoapActions.SEND_NEGOTIATION_RESPONSE_ACTION)
         ;
 
         scenario.echo("Sending Acknowledgement ...");

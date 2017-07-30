@@ -1,10 +1,12 @@
 package com.consol.citrus.simulator.porting.starter;
 
 import com.consol.citrus.simulator.model.ScenarioParameter;
+import com.consol.citrus.simulator.porting.SoapActions;
 import com.consol.citrus.simulator.scenario.AbstractScenarioStarter;
 import com.consol.citrus.simulator.scenario.ScenarioDesigner;
 import com.consol.citrus.simulator.scenario.Starter;
 import com.consol.citrus.ws.client.WebServiceClient;
+import com.consol.citrus.ws.message.SoapMessageHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Arrays;
@@ -29,7 +31,7 @@ public class PortingNegotiationResponse extends AbstractScenarioStarter {
                         "    <code>" + placeholder(CONFIRMATION_CODE) + "</code>\n" +
                         "    <text>" + placeholder(CONFIRMATION_TEXT) + "</text>\n" +
                         "</env:Response>")
-                .header("citrus_soap_action", "http://www.citrusframework.org/simulator/porting/sendNegotiationResponse");
+                .header(SoapMessageHeaders.SOAP_ACTION, SoapActions.SEND_NEGOTIATION_RESPONSE_ACTION);
 
         scenario.echo("Receving Acknowledgement ...");
         scenario.receive(webServiceClient)
