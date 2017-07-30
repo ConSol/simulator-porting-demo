@@ -1,7 +1,7 @@
 @startuml
 
-participant "CoolTelApplication\n(SUT as ReceivingCarrier)" as ReceivingCarrier
-participant "MyTelProviderSimulator\n(Scenario: 'DonatingCarrier')" as DonatingCarrier
+participant "CoolTelProviderSimulator(8080)\nScenario 'ReceivingCarrier'" as ReceivingCarrier
+participant "MyTelProviderSimulator(9090)\nScenario 'DonatingCarrier'" as DonatingCarrier
 
 
 ReceivingCarrier -> DonatingCarrier : PortingNegotiationRequest
