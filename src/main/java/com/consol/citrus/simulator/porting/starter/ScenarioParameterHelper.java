@@ -53,7 +53,6 @@ public class ScenarioParameterHelper {
                 .dropdown()
                 .addOption("DEU.COOLTEL", "CoolTel")
                 .addOption("DEU.MYTEL", "MyTel")
-                .value("DEU.COOLTEL") // TODO MM remove default
                 .build();
     }
 

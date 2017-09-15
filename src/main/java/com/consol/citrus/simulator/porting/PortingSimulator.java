@@ -16,16 +16,10 @@
 
 package com.consol.citrus.simulator.porting;
 
-import com.consol.citrus.simulator.annotation.EnableWebService;
-import com.consol.citrus.simulator.annotation.EnableWebServiceClient;
-import com.consol.citrus.simulator.annotation.SimulatorApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@SimulatorApplication
-@EnableWebService
-@EnableWebServiceClient
 public class PortingSimulator {
     public static void main(String[] args) {
         SpringApplication.run(PortingSimulator.class, args);

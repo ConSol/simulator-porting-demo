@@ -12,7 +12,7 @@ deactivate DonatingCarrier
 ...
 
 DonatingCarrier -> ReceivingCarrier : PortingNegotiationResponse
-note right: porting negotiation request approved / rejected
+note right: porting negotiation request\napproved / rejected
 activate ReceivingCarrier
 ReceivingCarrier -->> DonatingCarrier : Acknowledgment
 deactivate ReceivingCarrier

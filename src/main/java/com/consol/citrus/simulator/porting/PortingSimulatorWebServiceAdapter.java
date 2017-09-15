@@ -1,8 +1,8 @@
 package com.consol.citrus.simulator.porting;
 
-import com.consol.citrus.endpoint.adapter.mapping.MappingKeyExtractor;
-import com.consol.citrus.simulator.annotation.SimulatorWebServiceAdapter;
-import com.consol.citrus.simulator.mapper.ContentBasedXPathScenarioMapper;
+import com.consol.citrus.simulator.scenario.mapper.ContentBasedXPathScenarioMapper;
+import com.consol.citrus.simulator.scenario.mapper.ScenarioMapper;
+import com.consol.citrus.simulator.ws.SimulatorWebServiceAdapter;
 import com.consol.citrus.xml.namespace.NamespaceContextBuilder;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +16,7 @@ public class PortingSimulatorWebServiceAdapter extends SimulatorWebServiceAdapte
     }
 
     @Override
-    public MappingKeyExtractor mappingKeyExtractor() {
+    public ScenarioMapper scenarioMapper() {
         return new ContentBasedXPathScenarioMapper(namespaceContextBuilder)
                 .addXPathExpression("//portenv:Request/subscriber/surname");
     }
